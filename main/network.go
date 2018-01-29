@@ -507,7 +507,7 @@ func icmpEchoSender(c *icmp.PacketConn) {
 
 // Monitor clients going in/out of sleep mode via ICMP unreachable packets.
 func sleepMonitor() {
-	c, err := icmp.ListenPacket("ip4:icmp", "0.0.0.0")
+	c, err := icmp.ListenPacket("ip4:icmp", "192.168.10.1")
 	if err != nil {
 		log.Printf("error listening for udp - sending data to all ports for all connected clients. err: %s", err)
 		return
