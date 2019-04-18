@@ -45,7 +45,7 @@ var (
 
 const (
 	// CPU temperature target, degrees C
-	defaultTempTarget = 50.
+	defaultTempTarget = 40.
 	hysteresis        = float32(1.)
 
 	pwmClockDivisor = 100
