@@ -295,6 +295,9 @@ func sensorAttitudeSender() {
 				}
 
 				mySituation.AHRSLastAttitudeTime = t
+
+				// air data computer
+				//mySituation.ADCIndicatedAirspeed = value_from_sensor
 			} else {
 				mySituation.AHRSRoll = ahrs.Invalid
 				mySituation.AHRSPitch = ahrs.Invalid
@@ -306,6 +309,7 @@ func sensorAttitudeSender() {
 				mySituation.AHRSGLoadMin = ahrs.Invalid
 				mySituation.AHRSGLoadMax = 0
 				mySituation.AHRSLastAttitudeTime = time.Time{}
+				mySituation.ADCIndicatedAirspeed = 0
 				s.Reset()
 			}
 			mySituation.muAttitude.Unlock()
