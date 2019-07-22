@@ -297,7 +297,7 @@ func sensorAttitudeSender() {
 				mySituation.AHRSLastAttitudeTime = t
 
 				// air data computer
-				//mySituation.ADCIndicatedAirspeed = value_from_sensor
+				mySituation.ADCIndicatedAirspeed = 100
 			} else {
 				mySituation.AHRSRoll = ahrs.Invalid
 				mySituation.AHRSPitch = ahrs.Invalid
