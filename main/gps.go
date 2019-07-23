@@ -101,6 +101,7 @@ type SituationData struct {
 
 	// From ADC source.
 	ADCIndicatedAirspeed float64
+	ADCTrueAirspeed      float64
 }
 
 /*
@@ -1875,7 +1876,7 @@ func makeFFAHRSMessage() {
 	roll := int16(0x7FFF)
 	hdg := uint16(0xFFFF)
 	ias := int16(0x7FFF)
-	tas := uint16(0xFFFF)
+	tas := int16(0x7FFF)
 
 	if isAHRSValid() {
 		if !isAHRSInvalidValue(mySituation.AHRSPitch) {
@@ -1886,6 +1887,10 @@ func makeFFAHRSMessage() {
 		}
 		if !isAHRSInvalidValue(mySituation.ADCIndicatedAirspeed) {
 			ias = roundToInt16(mySituation.ADCIndicatedAirspeed)
+		}
+
+		if !isAHRSInvalidValue(mySituation.ADCTrueAirspeed) {
+			tas = roundToInt16(mySituation.ADCTrueAirspeed)
 		}
 	}
 
