@@ -100,7 +100,7 @@ type SituationData struct {
 	AHRSStatus           uint8
 
 	// From ADC source.
-	ADCIndicatedAirspeed uint8
+	ADCIndicatedAirspeed float64
 }
 
 /*
@@ -1957,6 +1957,9 @@ func makeAHRSGDL90Report() {
 		}
 		if !isAHRSInvalidValue(mySituation.AHRSGLoad) {
 			g = roundToInt16(mySituation.AHRSGLoad * 10)
+		}
+		if !isAHRSInvalidValue(mySituation.ADCIndicatedAirspeed) {
+			airspeed = roundToInt16(mySituation.ADCIndicatedAirspeed)
 		}
 	}
 	if isTempPressValid() {

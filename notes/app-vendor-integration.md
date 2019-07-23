@@ -252,7 +252,7 @@ Stratux makes available a webserver to retrieve statistics which may be useful t
   "AHRSGLoadMax": 1.0043409597397,                    // Maximum recorded G load, in G's.
   "AHRSLastAttitudeTime": "0001-01-01T00:06:44.28Z",  // Stratux clock ticks since last attitude update. Reference against /getStatus -> UptimeClock.
   "AHRSStatus": 7,                                    // Status bitmask. See main/sensors.go -> updateAHRSStatus().
-  "ADCIndicatedAirspeed": 5                           // Knots. Non-floating point
+  "ADCIndicatedAirspeed": 106.0043409597397           // Knots
 }
 ```
 
