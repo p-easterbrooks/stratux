@@ -1874,7 +1874,7 @@ func makeFFAHRSMessage() {
 	pitch := int16(0x7FFF)
 	roll := int16(0x7FFF)
 	hdg := uint16(0xFFFF)
-	ias := uint16(0xFFFF)
+	ias := int16(0x7FFF)
 	tas := uint16(0xFFFF)
 
 	if isAHRSValid() {
