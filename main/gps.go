@@ -1885,7 +1885,7 @@ func makeFFAHRSMessage() {
 			roll = roundToInt16(mySituation.AHRSRoll * 10)
 		}
 		if !isAHRSInvalidValue(mySituation.ADCIndicatedAirspeed) {
-			ias = roundToInt16(mySituation.ADCIndicatedAirspeed * 10)
+			ias = roundToInt16(mySituation.ADCIndicatedAirspeed)
 		}
 	}
 
