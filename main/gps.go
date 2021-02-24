@@ -98,6 +98,10 @@ type SituationData struct {
 	AHRSGLoadMax         float64
 	AHRSLastAttitudeTime time.Time
 	AHRSStatus           uint8
+
+	// From ADC source.
+	ADCIndicatedAirspeed float64
+	ADCTrueAirspeed      float64
 }
 
 /*
@@ -1873,8 +1877,8 @@ func makeFFAHRSMessage() {
 	pitch := int16(0x7FFF)
 	roll := int16(0x7FFF)
 	hdg := uint16(0xFFFF)
-	ias := uint16(0xFFFF)
-	tas := uint16(0xFFFF)
+	ias := int16(0x7FFF)
+	tas := int16(0x7FFF)
 
 	if isAHRSValid() {
 		if !isAHRSInvalidValue(mySituation.AHRSPitch) {
@@ -1882,6 +1886,13 @@ func makeFFAHRSMessage() {
 		}
 		if !isAHRSInvalidValue(mySituation.AHRSRoll) {
 			roll = roundToInt16(mySituation.AHRSRoll * 10)
+		}
+		if !isAHRSInvalidValue(mySituation.ADCIndicatedAirspeed) {
+			ias = roundToInt16(mySituation.ADCIndicatedAirspeed)
+		}
+
+		if !isAHRSInvalidValue(mySituation.ADCTrueAirspeed) {
+			tas = roundToInt16(mySituation.ADCTrueAirspeed)
 		}
 	}
 
@@ -1956,6 +1967,9 @@ func makeAHRSGDL90Report() {
 		}
 		if !isAHRSInvalidValue(mySituation.AHRSGLoad) {
 			g = roundToInt16(mySituation.AHRSGLoad * 10)
+		}
+		if !isAHRSInvalidValue(mySituation.ADCIndicatedAirspeed) {
+			airspeed = roundToInt16(mySituation.ADCIndicatedAirspeed)
 		}
 	}
 	if isTempPressValid() {
